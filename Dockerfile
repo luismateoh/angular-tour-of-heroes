@@ -1,11 +1,13 @@
-FROM node:16-alpine AS build
-WORKDIR /dist/src/app
+# Stage 0: compile angular frontend
+FROM node:latest as build
+WORKDIR /app
 RUN npm cache clean --force
 COPY . .
 RUN npm install
-RUN npm run build --prod
+RUN npm run build
 
-FROM nginx:latest AS ngi
-COPY --from=build /dist/src/app/dist/angular-tour-of-heroes/ /usr/share/nginx/html
-COPY /nginx.conf  /etc/nginx/conf.d/default.conf
+# Stage 1: serve app with nginx server
+FROM nginx:latest
+COPY --from=build /app/dist/angular-tour-of-heroes/.  /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80

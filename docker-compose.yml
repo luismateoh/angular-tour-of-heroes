@@ -1,7 +1,11 @@
 version: '3.7'
 
 services:
-  web:
-    build: .
+  angular-web:
+    container_name: angular-frontend
+    image: angular-frontend-img
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "80:80"
