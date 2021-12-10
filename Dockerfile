@@ -1,5 +1,5 @@
 # Stage 0: compile angular frontend
-FROM node:latest as build
+FROM node:16-alpine as build
 WORKDIR /app
 RUN npm cache clean --force
 COPY . .

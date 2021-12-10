@@ -1,4 +1,9 @@
 # AngularTourOfHeroes
+To deploy this project on Okteto:
+
+[![Develop on Okteto](https://okteto.com/develop-okteto.svg)](https://cloud.okteto.com/deploy)
+
+![Screenshot](Screenshot.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.3.
 
